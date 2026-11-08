@@ -1,0 +1,19 @@
+name: QuestTP
+version: 2.1.0
+main: ua.questtp.QuestTP
+api-version: "26.3"
+description: Teleport plates with a menu - points of interest and player departure points.
+commands:
+  questtp:
+    description: Керування точками телепорту
+    usage: /questtp <give|list|remove|reset|reload>
+    permission: questtp.eventmaker
+permissions:
+  questtp.eventmaker:
+    description: Видача, список і видалення точок інтересу
+    default: op
+  questtp.admin:
+    description: Усе, що й eventmaker, плюс видача точок відправки, reset і reload
+    default: op
+    children:
+      questtp.eventmaker: true
