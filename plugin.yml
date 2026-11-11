@@ -1,0 +1,18 @@
+name: QuestNPC
+version: 0.5.0
+main: ua.questnpc.QuestNPC
+api-version: "26.3"
+description: NPC with skins and native dialogs, edited in-game with the Mizkoprav wand.
+commands:
+  mizkoprav:
+    description: Видати Мізкоправ, керувати NPC і квестами
+    usage: /mizkoprav [give|list|remove|tp|here|quests|editor|reload]
+    aliases: [npcwand]
+    permission: questnpc.admin
+  quests:
+    description: Журнал квестів
+    usage: /quests
+permissions:
+  questnpc.admin:
+    description: Створення і налаштування NPC та квестів
+    default: op

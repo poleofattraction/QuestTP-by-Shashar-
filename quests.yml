@@ -1,0 +1,47 @@
+# Квести QuestNPC. Після зміни цього файлу: /mizkoprav reload
+#
+# id квесту: лише малі латинські літери, цифри, _ і -
+#
+# Квест складається з етапів, які проходяться по черзі. Типи етапів:
+#   reach    дійти до зони:   world, x, y, z, radius [, height]
+#            (radius вважається по горизонталі; height - допуск по висоті, не вказуй, якщо не треба)
+#   kill     вбити істот:     entity (EntityType, напр. ZOMBIE), amount
+#   deliver  принести предмети: material, amount, npc (№ NPC, якому віддати;
+#            предмети заберуться, коли гравець заговорить із цим NPC)
+#   talk     поговорити:      npc (№ NPC; зараховується, коли гравець відкриє з ним діалог)
+#
+# turn-in: true  означає, що після останнього етапу квест чекає здачі (кнопка з дією turnin:<id>).
+#          false означає, що нагорода видається одразу.
+# repeatable: true дозволяє брати квест повторно після виконання.
+# complete-message: необов'язкове повідомлення гравцю після виконання (&-коди, &#RRGGBB,
+#   {player} {quest} {xp}); без нього береться messages.quest-complete з config.yml.
+#
+# Нагороди: xp (досвід), items ("МАТЕРІАЛ:кількість"), commands (від консолі, {player} = нік).
+#
+# У діалозі NPC (поле "дія" кнопки): quest:<id> (взяти), turnin:<id> (здати).
+# Поле "умова" кнопки: new:<id>, active:<id>, ready:<id>, done:<id>; перед умовою можна ставити !
+
+quests:
+  example_walk:
+    name: "Приклад: прогулянка"
+    description: "Показовий квест. Заміни координати на свої."
+    repeatable: false
+    turn-in: false
+    stages:
+      - type: reach
+        text: "Дійди до вказаної зони"
+        world: world
+        x: 0
+        y: 80
+        z: 0
+        radius: 10
+        height: 15
+      - type: kill
+        text: "Вбий 3 зомбі"
+        entity: ZOMBIE
+        amount: 3
+    rewards:
+      xp: 100
+      items:
+        - "DIAMOND:2"
+      commands: []
